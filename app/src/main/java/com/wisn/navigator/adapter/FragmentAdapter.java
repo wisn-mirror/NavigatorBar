@@ -28,4 +28,10 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return data.size();
     }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+//        return super.getPageTitle(position);
+        return data.get(position);
+    }
 }

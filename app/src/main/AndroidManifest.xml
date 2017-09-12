@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RadioButtonActivity" />
-        <activity android:name=".activity.ViewPagerActivity" />
+        <activity android:name=".activity.ViewPagerRadioButtonActivity" />
         <activity android:name=".activity.TabLayoutActivity"></activity>
     </application>
 

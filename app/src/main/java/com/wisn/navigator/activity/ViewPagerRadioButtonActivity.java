@@ -17,8 +17,8 @@ import com.wisn.navigator.view.MyRadioButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewPagerActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener,
-                                                                    ViewPager.OnPageChangeListener {
+public class ViewPagerRadioButtonActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener,
+                                                                               ViewPager.OnPageChangeListener {
 
     private RadioGroup mRadioButton;
     private MyRadioButton mRadiobutton_bg_home;

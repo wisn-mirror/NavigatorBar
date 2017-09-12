@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.wisn.navigator.activity.RadioButtonActivity;
 import com.wisn.navigator.activity.TabLayoutActivity;
-import com.wisn.navigator.activity.ViewPagerActivity;
+import com.wisn.navigator.activity.ViewPagerRadioButtonActivity;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class FirstActivity extends AppCompatActivity {
                 startActivity(new Intent(this, RadioButtonActivity.class));
                 break;
             case R.id.viewPagerButton:
-                startActivity(new Intent(this, ViewPagerActivity.class));
+                startActivity(new Intent(this, ViewPagerRadioButtonActivity.class));
                 break;
             case R.id.TagLayoutButton:
                 startActivity(new Intent(this, TabLayoutActivity.class));
