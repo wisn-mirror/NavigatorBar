@@ -9,16 +9,23 @@
     tools:context="com.wisn.navigator.FirstActivity">
     <Button
         android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="radioButtonActivity"
         android:onClick="onClick"
         />
     <Button
         android:id="@+id/viewPagerButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="viewPagerButton"
+        android:onClick="onClick"
+        />
+    <Button
+        android:id="@+id/TagLayoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TagLayoutButton"
         android:onClick="onClick"
         />
 </LinearLayout>

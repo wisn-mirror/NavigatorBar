@@ -1,13 +1,12 @@
 package com.wisn.navigator.activity;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentTransaction;
 
-import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.wisn.navigator.R;
@@ -48,13 +47,13 @@ public class RadioButtonActivity extends AppCompatActivity implements RadioGroup
     private void setDefaultFragment() {
         mRadiobutton_bg_home.setChecked(true);
         Fragment homeFragment = FragmentFactory.getFragment("HomeFragment");
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.radio_content,homeFragment).commit();
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         Fragment fragment=null;
         switch (checkedId){
             case R.id.radiobutton_bg_home:

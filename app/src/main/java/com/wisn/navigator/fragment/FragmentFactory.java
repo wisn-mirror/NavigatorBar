@@ -1,6 +1,7 @@
 package com.wisn.navigator.fragment;
 
-import android.app.Fragment;
+
+import android.support.v4.app.Fragment;
 
 import java.util.HashMap;
 
