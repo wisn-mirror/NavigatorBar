@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:radiobutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/radioGroup"
+        android:background="#dfcccc" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.wisn.navigator.view.MyRadioButton
+            android:id="@+id/radiobutton_bg_home"
+            android:checked="true"
+            style="@style/rediobutton_style"
+            radiobutton:drawableTop="@drawable/radiobutton_bg_home"
+            radiobutton:drawableSize="30dp"
+            android:text="Home" />
+
+        <com.wisn.navigator.view.MyRadioButton
+            android:id="@+id/radiobutton_bg_gift"
+            style="@style/rediobutton_style"
+            radiobutton:drawableTop="@drawable/radiobutton_bg_gift"
+            radiobutton:drawableSize="30dp"
+            android:text="Gift" />
+
+        <com.wisn.navigator.view.MyRadioButton
+            android:id="@+id/radiobutton_bg_start"
+            style="@style/rediobutton_style"
+            radiobutton:drawableTop="@drawable/radiobutton_bg_start"
+            radiobutton:drawableSize="30dp"
+            android:text="Home" />
+
+        <com.wisn.navigator.view.MyRadioButton
+            android:id="@+id/radiobutton_bg_watch"
+            style="@style/rediobutton_style"
+            radiobutton:drawableTop="@drawable/radiobutton_bg_watch"
+            radiobutton:drawableSize="30dp"
+            android:text="Watch" />
+    </RadioGroup>
+
+</RelativeLayout>
