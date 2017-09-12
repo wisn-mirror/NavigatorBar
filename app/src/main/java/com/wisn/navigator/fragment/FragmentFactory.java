@@ -27,17 +27,22 @@ public class FragmentFactory {
     }
 
     private static Fragment createFragment(String fag) {
+        Fragment fragment=null;
         switch (fag) {
             case "GiftFragment":
-                return new GiftFragment();
+                fragment=new GiftFragment();
+                break;
             case "HomeFragment":
-                return new HomeFragment();
+                fragment=new HomeFragment();
+                break;
             case "StartFragment":
-                return new StartFragment();
+                fragment= new StartFragment();
+                break;
             case "WatchFragment":
-                return new WatchFragment();
+                fragment= new WatchFragment();
+                break;
 
         }
-        return null;
+        return fragment;
     }
 }

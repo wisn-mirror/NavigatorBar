@@ -23,7 +23,7 @@ public class GiftFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_content,container,false);
         Bundle bundle=this.getArguments();
-        String tag = bundle.getString("TAG");
+//        String tag = bundle.getString("TAG");
         TextView textView = (TextView) view.findViewById(R.id.fragment_textView);
         textView.setText("GiftFragment");
         return view;
