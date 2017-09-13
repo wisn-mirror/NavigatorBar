@@ -14,17 +14,24 @@ import com.wisn.navigator.R;
  * Created by wisn on 2017/9/11.
  */
 
-public class WatchFragment extends Fragment {
-    @Nullable
+public class WatchFragment extends BaseFragment {
+
+
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_content, container, false);
-        Bundle bundle=this.getArguments();
+    public String getFragment() {
+        return "WatchFragment";
+    }
+
+    @Override
+    public View onCreateLazyView(LayoutInflater inflater,
+                                 @Nullable ViewGroup container,
+                                 @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_content, container, false);
+        Bundle bundle = this.getArguments();
 //        String tag = bundle.getString("TAG");
         TextView textView = (TextView) view.findViewById(R.id.fragment_textView);
         textView.setText("WatchFragment");
         return view;
     }
+
 }
