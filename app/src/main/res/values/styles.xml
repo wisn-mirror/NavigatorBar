@@ -16,6 +16,11 @@
     </style>
     <style name="tabTextSizeStyle">
         <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@drawable/radiobutton_bottom_textcolor</item>
+    </style>
+    <style name="tabLayoutTextSizeStyle"  parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12dp</item>
+        <item name="textAllCaps">false</item>
     </style>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">

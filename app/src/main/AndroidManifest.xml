@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".activity.RadioButtonActivity" />
         <activity android:name=".activity.ViewPagerRadioButtonActivity" />
-        <activity android:name=".activity.TabLayoutActivity"></activity>
+        <activity android:name=".activity.TabLayoutActivity"/>
+        <activity android:name=".activity.TabLayoutCustomeViewActivity"/>
     </application>
 
 </manifest>

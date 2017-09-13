@@ -13,12 +13,13 @@
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tablelayout"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         app:tabBackground="@android:color/white"
         app:tabIndicatorHeight="0dp"
         app:tabSelectedTextColor="#7c1b17"
-        app:tabTextAppearance="@style/tabTextSizeStyle"
-        app:tabTextColor="#837f7f" />
+        app:tabTextAppearance="@style/tabLayoutTextSizeStyle"
+        app:tabTextColor="#837f7f" ></android.support.design.widget.TabLayout>
 
 </RelativeLayout>

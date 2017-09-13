@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,11 +20,15 @@ import java.util.List;
  * Created by wisn on 2017/9/12.
  */
 
-public class FragmentAdapter extends FragmentPagerAdapter {
+public class TabLayoutFragmentAdapter extends FragmentPagerAdapter {
     List<String> data=null;
-    public FragmentAdapter(FragmentManager fm, List<String> data) {
+    List<String> tableName=null;
+    int[] imgIds=null;
+    public TabLayoutFragmentAdapter(FragmentManager fm, List<String> data,int[] imgIds,List<String> tableName) {
         super(fm);
         this.data=data;
+        this.imgIds=imgIds;
+        this.tableName=tableName;
     }
 
     @Override
