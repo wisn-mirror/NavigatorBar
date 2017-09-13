@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +17,6 @@ public abstract class BaseLazyFragment extends Fragment {
 
     private View rootView;
     private boolean isFirstVisible=true;
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.e(TAG, "onAttach ");
-
-    }
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.e(TAG,"onCreate");
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -48,12 +35,6 @@ public abstract class BaseLazyFragment extends Fragment {
         if (isFirstVisible&&isFrameVisible) {
             firstVisible();
         }
-    }
-
-
-    @Override
-    public boolean getUserVisibleHint() {
-        return super.getUserVisibleHint();
     }
 
     @Override
@@ -84,25 +65,10 @@ public abstract class BaseLazyFragment extends Fragment {
         isFirstVisible=false;
     }
 
-    public void onFragmentVisibleChange(boolean isVisible){
+    public void onFragmentVisibleChange(boolean isVisible){}
 
-    }
-    /**
-     * 第一次可见
-     */
-    public void firstVisible() {
+    public void firstVisible() {}
 
-    }
-
-    /**
-     * onCreateLazyView
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     *
-     * @return
-     */
     public abstract View onCreateLazyView(LayoutInflater inflater,
                                           @Nullable ViewGroup container,
                                           @Nullable Bundle savedInstanceState);

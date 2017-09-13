@@ -48,10 +48,6 @@ public class TabLayoutNavigatorActivity extends AppCompatActivity implements Tab
         mTablelayout.getTabAt(1).setIcon(R.drawable.gift_0).setText("GiftFragment");
         mTablelayout.getTabAt(2).setIcon(R.drawable.start_0).setText("StartFragment");
         mTablelayout.getTabAt(3).setIcon(R.drawable.watch_0).setText("WatchFragment");
-//        mTablelayout.addTab(mTablelayout.newTab().setIcon(R.drawable.home_1).setText("HomeFragment"));
-//        mTablelayout.addTab(mTablelayout.newTab().setIcon(R.drawable.gift_0).setText("GiftFragment"));
-//        mTablelayout.addTab(mTablelayout.newTab().setIcon(R.drawable.start_0).setText("StartFragment"));
-//        mTablelayout.addTab(mTablelayout.newTab().setIcon(R.drawable.watch_0).setText("WatchFragment"));
         mTablelayout.addOnTabSelectedListener(this);
     }
 

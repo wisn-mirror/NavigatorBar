@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.wisn.navigator.R;
@@ -15,7 +14,7 @@ import com.wisn.navigator.R;
  */
 
 public class MyTextView extends TextView {
-    private int mDrawableSize;// xml文件中设置的大小
+    private int mDrawableSize;
 
     public MyTextView(Context context) {
         super(context);
@@ -23,14 +22,15 @@ public class MyTextView extends TextView {
 
     public MyTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        init(context, attrs);
     }
 
     public MyTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context,attrs);
+        init(context, attrs);
     }
-    public void init(Context context, AttributeSet attrs){
+
+    public void init(Context context, AttributeSet attrs) {
         Drawable drawableLeft = null, drawableTop = null, drawableRight = null, drawableBottom = null;
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ButtonView);
 
@@ -63,15 +63,17 @@ public class MyTextView extends TextView {
         setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
     }
 
-    public void setTopDrawable(Drawable top ){
-        setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
+    public void setTopDrawable(Drawable top) {
+        setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
     }
 
     /**
      * RadioButton上、下、左、右设置图标
      */
-    public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
-//        Log.e("aaa", "aaa:" + mDrawableSize);
+    public void setCompoundDrawablesWithIntrinsicBounds(Drawable left,
+                                                        Drawable top,
+                                                        Drawable right,
+                                                        Drawable bottom) {
         if (left != null) {
             left.setBounds(0, 0, mDrawableSize, mDrawableSize);
         }

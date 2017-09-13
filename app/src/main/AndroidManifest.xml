@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RadioButtonNavigatorActivity" />
-        <activity android:name=".activity.ViewPagerRadioButtonNavigatorActivity" />
+        <activity android:name=".activity.RadioButtonViewPagerNavigatorActivity" />
         <activity android:name=".activity.TabLayoutNavigatorActivity"/>
         <activity android:name=".activity.TabLayoutCustomeViewNavigatorActivity"/>
         <activity android:name=".activity.TextViewNavigatorActivity"/>

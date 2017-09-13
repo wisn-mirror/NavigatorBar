@@ -62,40 +62,30 @@ public class TabLayoutCustomeViewNavigatorActivity extends AppCompatActivity imp
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-        View inflate = tab.getCustomView();
-        int  position = tab.getPosition();
-        TabLayoutCustomeHolder tabLayoutCustomeHolder = (TabLayoutCustomeHolder) inflate.getTag();
-        if(tabLayoutCustomeHolder!=null){
-            tabLayoutCustomeHolder.mImageView.setImageResource(images2[position]);
-            tabLayoutCustomeHolder.mTextview.setText(data.get(position));
-            tabLayoutCustomeHolder.mTextview.setTextColor(ContextCompat.getColor(this,R.color.selectColor));
-        }else{
-            ImageView imageView= (ImageView) inflate.findViewById(R.id.imageView);
-            TextView textview= (TextView) inflate.findViewById(R.id.textView);
-            imageView.setImageResource(images2[position]);
-            textview.setText(data.get(position));
-            textview.setTextColor(ContextCompat.getColor(this,R.color.selectColor));
-        }
+        updateTab(tab,images2,R.color.selectColor);
     }
 
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
+        updateTab(tab,images,R.color.unSelectColor);
+    }
+
+    public void updateTab(TabLayout.Tab tab,int[] images,int textColorId){
         View inflate = tab.getCustomView();
         int  position = tab.getPosition();
         TabLayoutCustomeHolder tabLayoutCustomeHolder = (TabLayoutCustomeHolder) inflate.getTag();
         if(tabLayoutCustomeHolder!=null){
             tabLayoutCustomeHolder.mImageView.setImageResource(images[position]);
             tabLayoutCustomeHolder.mTextview.setText(data.get(position));
-            tabLayoutCustomeHolder.mTextview.setTextColor(ContextCompat.getColor(this,R.color.unSelectColor));
+            tabLayoutCustomeHolder.mTextview.setTextColor(ContextCompat.getColor(this,textColorId));
         }else{
             ImageView imageView= (ImageView) inflate.findViewById(R.id.imageView);
             TextView textview= (TextView) inflate.findViewById(R.id.textView);
             imageView.setImageResource(images[position]);
             textview.setText(data.get(position));
-            textview.setTextColor(ContextCompat.getColor(this,R.color.unSelectColor));
+            textview.setTextColor(ContextCompat.getColor(this,textColorId));
         }
     }
-
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.RadioButton;
 
 import com.wisn.navigator.R;
@@ -13,8 +12,8 @@ import com.wisn.navigator.R;
  * Created by wisn on 2017/9/12.
  */
 
-public class MyRadioButton extends RadioButton{
-    private int mDrawableSize;// xml文件中设置的大小
+public class MyRadioButton extends RadioButton {
+    private int mDrawableSize;
 
     public MyRadioButton(Context context) {
         super(context);
@@ -22,14 +21,15 @@ public class MyRadioButton extends RadioButton{
 
     public MyRadioButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        init(context, attrs);
     }
 
     public MyRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context,attrs);
+        init(context, attrs);
     }
-    public void init(Context context, AttributeSet attrs){
+
+    public void init(Context context, AttributeSet attrs) {
         Drawable drawableLeft = null, drawableTop = null, drawableRight = null, drawableBottom = null;
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ButtonView);
 
@@ -63,8 +63,10 @@ public class MyRadioButton extends RadioButton{
     /**
      * RadioButton上、下、左、右设置图标
      */
-    public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
-        Log.e("aaa","aaa:"+mDrawableSize);
+    public void setCompoundDrawablesWithIntrinsicBounds(Drawable left,
+                                                        Drawable top,
+                                                        Drawable right,
+                                                        Drawable bottom) {
         if (left != null) {
             left.setBounds(0, 0, mDrawableSize, mDrawableSize);
         }

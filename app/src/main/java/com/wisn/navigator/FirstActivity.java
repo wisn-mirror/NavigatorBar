@@ -11,7 +11,7 @@ import com.wisn.navigator.activity.TabLayoutNavigatorActivity;
 import com.wisn.navigator.activity.TabLayoutCustomeViewNavigatorActivity;
 import com.wisn.navigator.activity.TextViewNavigatorActivity;
 import com.wisn.navigator.activity.TextViewViewPagerNavigatorActivity;
-import com.wisn.navigator.activity.ViewPagerRadioButtonNavigatorActivity;
+import com.wisn.navigator.activity.RadioButtonViewPagerNavigatorActivity;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class FirstActivity extends AppCompatActivity {
                 startActivity(new Intent(this, RadioButtonNavigatorActivity.class));
                 break;
             case R.id.viewPagerButton:
-                startActivity(new Intent(this, ViewPagerRadioButtonNavigatorActivity.class));
+                startActivity(new Intent(this, RadioButtonViewPagerNavigatorActivity.class));
                 break;
             case R.id.TagLayoutButton:
                 startActivity(new Intent(this, TabLayoutNavigatorActivity.class));
