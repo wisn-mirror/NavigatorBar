@@ -12,7 +12,6 @@
         <activity android:name=".FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -20,6 +19,7 @@
         <activity android:name=".activity.ViewPagerRadioButtonNavigatorActivity" />
         <activity android:name=".activity.TabLayoutNavigatorActivity"/>
         <activity android:name=".activity.TabLayoutCustomeViewNavigatorActivity"/>
+        <activity android:name=".activity.TextViewNavigatorActivity"/>
     </application>
 
 </manifest>

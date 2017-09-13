@@ -52,4 +52,13 @@
         android:gravity="center"
         android:onClick="onClick"
         />
+    <TextView
+        android:id="@+id/TextViewViewPagerNavigatorActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:text="TextViewViewPagerNavigatorActivity"
+        android:gravity="center"
+        android:onClick="onClick"
+        />
 </LinearLayout>

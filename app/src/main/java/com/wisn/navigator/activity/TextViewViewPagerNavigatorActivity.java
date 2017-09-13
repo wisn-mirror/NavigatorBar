@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -14,8 +15,9 @@ import com.wisn.navigator.view.MyTextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextViewNavigatorActivity extends AppCompatActivity implements View.OnClickListener {
+public class TextViewViewPagerNavigatorActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private ViewPager mViewPager;
     private List<String> data = new ArrayList<String>();
     private MyTextView mWatch;
     private MyTextView mStart;
@@ -26,15 +28,11 @@ public class TextViewNavigatorActivity extends AppCompatActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigator_textview);
+        setContentView(R.layout.activity_navigator_textview_viewpage);
         mHome = (MyTextView) findViewById(R.id.home);
         mGift = (MyTextView) findViewById(R.id.gift);
         mStart = (MyTextView) findViewById(R.id.start);
         mWatch = (MyTextView) findViewById(R.id.watch);
-        mHome.setOnClickListener(this);
-        mGift.setOnClickListener(this);
-        mStart.setOnClickListener(this);
-        mWatch.setOnClickListener(this);
     }
 
     @Override
@@ -108,6 +106,4 @@ public class TextViewNavigatorActivity extends AppCompatActivity implements View
         view.setTextColor(ContextCompat.getColor(this, colorId));
         view.setTopDrawable(ContextCompat.getDrawable(this, drawableId));
     }
-
-
 }

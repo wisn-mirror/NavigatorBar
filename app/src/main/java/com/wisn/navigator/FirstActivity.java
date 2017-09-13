@@ -10,6 +10,7 @@ import com.wisn.navigator.activity.RadioButtonNavigatorActivity;
 import com.wisn.navigator.activity.TabLayoutNavigatorActivity;
 import com.wisn.navigator.activity.TabLayoutCustomeViewNavigatorActivity;
 import com.wisn.navigator.activity.TextViewNavigatorActivity;
+import com.wisn.navigator.activity.TextViewViewPagerNavigatorActivity;
 import com.wisn.navigator.activity.ViewPagerRadioButtonNavigatorActivity;
 
 public class FirstActivity extends AppCompatActivity {
@@ -38,6 +39,9 @@ public class FirstActivity extends AppCompatActivity {
                 break;
             case R.id.TextViewNavigatorActivity:
                 startActivity(new Intent(this, TextViewNavigatorActivity.class));
+                break;
+            case R.id.TextViewViewPagerNavigatorActivity:
+                startActivity(new Intent(this, TextViewViewPagerNavigatorActivity.class));
                 break;
         }
     }

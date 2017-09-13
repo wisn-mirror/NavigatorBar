@@ -3,29 +3,30 @@ package com.wisn.navigator.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.wisn.navigator.R;
 
 /**
- * Created by wisn on 2017/9/12.
+ * Created by wisn on 2017/9/13.
  */
 
-public class MyRadioButton extends RadioButton{
+public class MyTextView extends TextView {
     private int mDrawableSize;// xml文件中设置的大小
 
-    public MyRadioButton(Context context) {
+    public MyTextView(Context context) {
         super(context);
     }
 
-    public MyRadioButton(Context context, AttributeSet attrs) {
+    public MyTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context,attrs);
     }
 
-    public MyRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MyTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context,attrs);
     }
@@ -47,9 +48,11 @@ public class MyRadioButton extends RadioButton{
                     drawableRight = a.getDrawable(attr);
                     break;
                 case R.styleable.ButtonView_drawableRight:
+
                     drawableBottom = a.getDrawable(attr);
                     break;
                 case R.styleable.ButtonView_drawableLeft:
+
                     drawableLeft = a.getDrawable(attr);
                     break;
                 default:
@@ -60,11 +63,15 @@ public class MyRadioButton extends RadioButton{
         setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
     }
 
+    public void setTopDrawable(Drawable top ){
+        setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
+    }
+
     /**
      * RadioButton上、下、左、右设置图标
      */
     public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
-        Log.e("aaa","aaa:"+mDrawableSize);
+//        Log.e("aaa", "aaa:" + mDrawableSize);
         if (left != null) {
             left.setBounds(0, 0, mDrawableSize, mDrawableSize);
         }
@@ -79,5 +86,4 @@ public class MyRadioButton extends RadioButton{
         }
         setCompoundDrawables(left, top, right, bottom);
     }
-
 }
