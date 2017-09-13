@@ -20,6 +20,7 @@
         <activity android:name=".activity.TabLayoutNavigatorActivity"/>
         <activity android:name=".activity.TabLayoutCustomeViewNavigatorActivity"/>
         <activity android:name=".activity.TextViewNavigatorActivity"/>
+        <activity android:name=".activity.TextViewViewPagerNavigatorActivity"/>
     </application>
 
 </manifest>
