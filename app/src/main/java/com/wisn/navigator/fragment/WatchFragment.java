@@ -1,20 +1,23 @@
 package com.wisn.navigator.fragment;
 
-import android.support.v4.app.Fragment;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.wisn.navigator.R;
+import com.wisn.navigator.base.BaseFragment;
+import com.wisn.navigator.base.BaseLazyFragment;
 
 /**
  * Created by wisn on 2017/9/11.
  */
 
-public class WatchFragment extends BaseFragment {
+public class WatchFragment extends BaseLazyFragment {
 
 
     @Override
@@ -34,4 +37,15 @@ public class WatchFragment extends BaseFragment {
         return view;
     }
 
+    @Override
+    public void firstVisible() {
+        super.firstVisible();
+        Log.e(TAG,"firstVisible ");
+    }
+
+    @Override
+    public void onFragmentVisibleChange(boolean isVisible) {
+        super.onFragmentVisibleChange(isVisible);
+        Log.e(TAG,"onFragmentVisibleChange isVisible:"+isVisible);
+    }
 }
