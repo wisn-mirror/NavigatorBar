@@ -16,7 +16,8 @@ TextViewViewPagerNavigatorActivity
 
 
 ### ScreenShot
-<img width="30%" src="./img/shot1.jpg" />
+
+<img width="30%" src="./example.jpg" />
 
 
 
