@@ -11,7 +11,7 @@ import com.wisn.navigator.adapter.TabLayoutFragmentAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabLayoutActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
+public class TabLayoutNavigatorActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     private ViewPager mViewPager;
     private TabLayout mTablelayout;
@@ -25,7 +25,7 @@ public class TabLayoutActivity extends AppCompatActivity implements TabLayout.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab_layout);
+        setContentView(R.layout.activity_navigator_tab_layout);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mTablelayout = (TabLayout) findViewById(R.id.tablelayout);
     }

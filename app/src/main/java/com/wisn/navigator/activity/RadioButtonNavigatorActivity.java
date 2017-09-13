@@ -17,7 +17,7 @@ import com.wisn.navigator.view.MyRadioButton;
  * Created by wisn on 2017/9/12.
  */
 
-public class RadioButtonActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class RadioButtonNavigatorActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup mRadioButton;
     private MyRadioButton mRadiobutton_bg_home;

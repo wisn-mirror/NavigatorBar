@@ -7,32 +7,49 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context="com.wisn.navigator.FirstActivity">
-    <Button
+    <TextView
         android:id="@+id/radioButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="radioButtonActivity"
+        android:minHeight="50dp"
+        android:text="RadioButtonNavigatorActivity"
+        android:gravity="center"
         android:onClick="onClick"
         />
-    <Button
+    <TextView
         android:id="@+id/viewPagerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="viewPagerButton"
+        android:minHeight="50dp"
+        android:text="ViewPagerRadioButtonNavigatorActivity"
+        android:gravity="center"
         android:onClick="onClick"
         />
-    <Button
+    <TextView
         android:id="@+id/TagLayoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TagLayoutButton"
+        android:minHeight="50dp"
+        android:text="TabLayoutNavigatorActivity"
+        android:gravity="center"
         android:onClick="onClick"
         />
-    <Button
+    <TextView
         android:id="@+id/TabLayoutCustomeViewActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TagLayoutCustomeButton"
+        android:minHeight="50dp"
+        android:text="TabLayoutCustomeViewNavigatorActivity"
+        android:gravity="center"
+        android:onClick="onClick"
+        />
+    <TextView
+        android:id="@+id/TextViewNavigatorActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:text="TextViewNavigatorActivity"
+        android:gravity="center"
         android:onClick="onClick"
         />
 </LinearLayout>

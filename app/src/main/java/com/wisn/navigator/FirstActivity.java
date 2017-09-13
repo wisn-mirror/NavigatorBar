@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.wisn.navigator.activity.RadioButtonActivity;
-import com.wisn.navigator.activity.TabLayoutActivity;
-import com.wisn.navigator.activity.TabLayoutCustomeViewActivity;
-import com.wisn.navigator.activity.ViewPagerRadioButtonActivity;
+import com.wisn.navigator.activity.RadioButtonNavigatorActivity;
+import com.wisn.navigator.activity.TabLayoutNavigatorActivity;
+import com.wisn.navigator.activity.TabLayoutCustomeViewNavigatorActivity;
+import com.wisn.navigator.activity.TextViewNavigatorActivity;
+import com.wisn.navigator.activity.ViewPagerRadioButtonNavigatorActivity;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -24,16 +25,19 @@ public class FirstActivity extends AppCompatActivity {
         int viewId = view.getId();
         switch (viewId) {
             case R.id.radioButton:
-                startActivity(new Intent(this, RadioButtonActivity.class));
+                startActivity(new Intent(this, RadioButtonNavigatorActivity.class));
                 break;
             case R.id.viewPagerButton:
-                startActivity(new Intent(this, ViewPagerRadioButtonActivity.class));
+                startActivity(new Intent(this, ViewPagerRadioButtonNavigatorActivity.class));
                 break;
             case R.id.TagLayoutButton:
-                startActivity(new Intent(this, TabLayoutActivity.class));
+                startActivity(new Intent(this, TabLayoutNavigatorActivity.class));
                 break;
             case R.id.TabLayoutCustomeViewActivity:
-                startActivity(new Intent(this, TabLayoutCustomeViewActivity.class));
+                startActivity(new Intent(this, TabLayoutCustomeViewNavigatorActivity.class));
+                break;
+            case R.id.TextViewNavigatorActivity:
+                startActivity(new Intent(this, TextViewNavigatorActivity.class));
                 break;
         }
     }

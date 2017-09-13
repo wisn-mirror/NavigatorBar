@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wisn.navigator.R;
-import com.wisn.navigator.activity.TabLayoutActivity;
 
 /**
  * Created by wisn on 2017/9/13.

@@ -1,9 +1,7 @@
 package com.wisn.navigator.activity;
 
-import android.support.v4.app.FragmentTransaction;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,14 +9,13 @@ import android.widget.RadioGroup;
 
 import com.wisn.navigator.R;
 import com.wisn.navigator.adapter.FragmentAdapter;
-import com.wisn.navigator.fragment.FragmentFactory;
 import com.wisn.navigator.view.MyRadioButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewPagerRadioButtonActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener,
-                                                                               ViewPager.OnPageChangeListener {
+public class ViewPagerRadioButtonNavigatorActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener,
+                                                                                        ViewPager.OnPageChangeListener {
 
     private RadioGroup mRadioButton;
     private MyRadioButton mRadiobutton_bg_home;
@@ -31,7 +28,7 @@ public class ViewPagerRadioButtonActivity extends AppCompatActivity implements R
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_pager);
+        setContentView(R.layout.activity_navigator_view_pager);
         mRadioButton = (RadioGroup)findViewById(R.id.bottom_radiogroup);
         mViewpager = (ViewPager)findViewById(R.id.viewpager);
         mRadiobutton_bg_home = (MyRadioButton)findViewById(R.id.radiobutton_bg_home);

@@ -16,10 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RadioButtonActivity" />
-        <activity android:name=".activity.ViewPagerRadioButtonActivity" />
-        <activity android:name=".activity.TabLayoutActivity"/>
-        <activity android:name=".activity.TabLayoutCustomeViewActivity"/>
+        <activity android:name=".activity.RadioButtonNavigatorActivity" />
+        <activity android:name=".activity.ViewPagerRadioButtonNavigatorActivity" />
+        <activity android:name=".activity.TabLayoutNavigatorActivity"/>
+        <activity android:name=".activity.TabLayoutCustomeViewNavigatorActivity"/>
     </application>
 
 </manifest>

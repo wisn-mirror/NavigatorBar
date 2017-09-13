@@ -11,13 +11,12 @@ import android.widget.TextView;
 
 import com.wisn.navigator.R;
 import com.wisn.navigator.adapter.TabLayoutCustomViewFragmentAdapter;
-import com.wisn.navigator.adapter.TabLayoutFragmentAdapter;
 import com.wisn.navigator.bean.TabLayoutCustomeHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabLayoutCustomeViewActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
+public class TextViewNavigatorActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     private ViewPager mViewPager;
     private TabLayout mTablelayout;
@@ -35,7 +34,7 @@ public class TabLayoutCustomeViewActivity extends AppCompatActivity implements T
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab_layout);
+        setContentView(R.layout.activity_navigator_textview);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mTablelayout = (TabLayout) findViewById(R.id.tablelayout);
     }
