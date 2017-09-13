@@ -48,8 +48,6 @@ public abstract class BaseLazyFragment extends Fragment {
         if (isFirstVisible&&isFrameVisible) {
             firstVisible();
         }
-        onFragmentVisibleChange(false);
-
     }
 
 
