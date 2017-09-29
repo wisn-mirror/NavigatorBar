@@ -25,7 +25,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         mRadioButton = (MyRadioButton) findViewById(R.id.radiobutton_bg_watch);
-        MyTextView = (MyTextView) findViewById(R.id.MyTextView);
+//        MyTextView = (MyTextView) findViewById(R.id.MyTextView);
     }
 
     public void onClick(View view) {
@@ -51,15 +51,15 @@ public class FirstActivity extends AppCompatActivity {
                 break;
             case R.id.clearText:
                 mRadioButton.clearTip();
-                MyTextView.clearTip();
+//                MyTextView.clearTip();
                 break;
             case R.id.setText:
                 mRadioButton.setTipText("99");
-                MyTextView.setTipText("99");
+//                MyTextView.setTipText("99");
                 break;
             case R.id.setTip:
                 mRadioButton.setTip();
-                MyTextView.setTip();
+//                MyTextView.setTip();
                 break;
         }
     }

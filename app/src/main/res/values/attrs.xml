@@ -8,9 +8,11 @@
         <attr name="drawableBottom" format="reference"/>
         <attr name="tipText" format="string"/>
         <attr name="tipTextSize" format="dimension"/>
-        <attr name="tipCircleRedius" format="dimension"/>
+        <attr name="tipTextRedius" format="dimension"/>
         <attr name="tipRedius" format="dimension"/>
         <attr name="tipRediusMarginTop" format="dimension"/>
         <attr name="tipRediusMarginRight" format="dimension"/>
+        <attr name="tipTextColor" format="color"/>
+        <attr name="tipBackground" format="color"/>
     </declare-styleable>
 </resources>
