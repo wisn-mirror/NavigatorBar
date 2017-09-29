@@ -35,12 +35,12 @@ public class RadioButtonNavigatorActivity extends AppCompatActivity implements R
         mRadiobutton_bg_start = (MyRadioButton)findViewById(R.id.radiobutton_bg_start);
         mRadiobutton_bg_watch = (MyRadioButton)findViewById(R.id.radiobutton_bg_watch);
         mRadioButton.setOnCheckedChangeListener(this);
+        setDefaultFragment();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        setDefaultFragment();
 
     }
 

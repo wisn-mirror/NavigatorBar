@@ -28,7 +28,7 @@ public class RadioButtonViewPagerNavigatorActivity extends AppCompatActivity imp
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigator_view_pager);
+        setContentView(R.layout.activity_navigator_viewpager);
         mRadioButton = (RadioGroup)findViewById(R.id.bottom_radiogroup);
         mViewpager = (ViewPager)findViewById(R.id.viewpager);
         mRadiobutton_bg_home = (MyRadioButton)findViewById(R.id.radiobutton_bg_home);
@@ -36,12 +36,12 @@ public class RadioButtonViewPagerNavigatorActivity extends AppCompatActivity imp
         mRadiobutton_bg_start = (MyRadioButton)findViewById(R.id.radiobutton_bg_start);
         mRadiobutton_bg_watch = (MyRadioButton)findViewById(R.id.radiobutton_bg_watch);
         mRadioButton.setOnCheckedChangeListener(this);
+        setDefaultFragment();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        setDefaultFragment();
     }
 
     private void setDefaultFragment() {

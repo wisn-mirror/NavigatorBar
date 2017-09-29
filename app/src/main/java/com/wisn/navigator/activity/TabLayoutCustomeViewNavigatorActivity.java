@@ -37,11 +37,6 @@ public class TabLayoutCustomeViewNavigatorActivity extends AppCompatActivity imp
         setContentView(R.layout.activity_navigator_tab_layout);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mTablelayout = (TabLayout) findViewById(R.id.tablelayout);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         data.add("HomeFragment");
         data.add("GiftFragment");
         data.add("StartFragment");
@@ -57,6 +52,11 @@ public class TabLayoutCustomeViewNavigatorActivity extends AppCompatActivity imp
             mTablelayout.getTabAt(i).setCustomView(fragmentPagerAdapter.getView(this,i));
         }
         mTablelayout.addOnTabSelectedListener(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
 

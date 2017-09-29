@@ -28,11 +28,6 @@ public class TabLayoutNavigatorActivity extends AppCompatActivity implements Tab
         setContentView(R.layout.activity_navigator_tab_layout);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mTablelayout = (TabLayout) findViewById(R.id.tablelayout);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         data.add("HomeFragment");
         data.add("GiftFragment");
         data.add("StartFragment");
@@ -49,6 +44,11 @@ public class TabLayoutNavigatorActivity extends AppCompatActivity implements Tab
         mTablelayout.getTabAt(2).setIcon(R.drawable.start_0).setText("StartFragment");
         mTablelayout.getTabAt(3).setIcon(R.drawable.watch_0).setText("WatchFragment");
         mTablelayout.addOnTabSelectedListener(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
 

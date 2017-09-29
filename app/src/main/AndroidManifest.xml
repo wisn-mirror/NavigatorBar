@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstActivity">
+        <activity android:name=".activity.RadioButtonViewPagerNavigatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.RadioButtonNavigatorActivity" />
-        <activity android:name=".activity.RadioButtonViewPagerNavigatorActivity" />
+        <activity android:name=".FirstActivity" />
         <activity android:name=".activity.TabLayoutNavigatorActivity"/>
         <activity android:name=".activity.TabLayoutCustomeViewNavigatorActivity"/>
         <activity android:name=".activity.TextViewNavigatorActivity"/>
