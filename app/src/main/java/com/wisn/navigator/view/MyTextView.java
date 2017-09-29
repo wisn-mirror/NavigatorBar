@@ -53,7 +53,6 @@ public class MyTextView extends TextView {
 
 
     public void init(Context context, AttributeSet attrs) {
-        Log.e("MyRadioButton", "init");
         Drawable drawableLeft = null, drawableTop = null, drawableRight = null, drawableBottom = null;
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ButtonView);
         mDrawableSize = a.getDimensionPixelSize(R.styleable.ButtonView_drawableSize, 50);
@@ -100,8 +99,8 @@ public class MyTextView extends TextView {
             mPaint.setColor(tipBackground);
             canvas.drawCircle(width - tipTextRedius*2-tipRediusMarginRight , tipRediusMarginTop+tipTextRedius, tipTextRedius, mPaint);
             mPaint.setColor(tipTextColor);
-            mPaint.getTextBounds(textMsg, 0, textMsg.length(), mRect);
             mPaint.setTextSize(tipTextSize);
+            mPaint.getTextBounds(textMsg, 0, textMsg.length(), mRect);
             canvas.drawText(textMsg,
                             width - tipTextRedius*2-tipRediusMarginRight-mRect.width()/2,
                             tipRediusMarginTop+tipTextRedius+ mRect.height() / 2,
