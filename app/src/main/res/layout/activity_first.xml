@@ -1,64 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:radiobutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.wisn.navigator.FirstActivity">
+
     <TextView
         android:id="@+id/radioButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
-        android:text="RadioButtonNavigatorActivity"
         android:gravity="center"
+        android:minHeight="50dp"
         android:onClick="onClick"
-        />
+        android:text="RadioButtonNavigatorActivity" />
+
     <TextView
         android:id="@+id/viewPagerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
-        android:text="ViewPagerRadioButtonNavigatorActivity"
         android:gravity="center"
+        android:minHeight="50dp"
         android:onClick="onClick"
-        />
+        android:text="ViewPagerRadioButtonNavigatorActivity" />
+
     <TextView
         android:id="@+id/TagLayoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
-        android:text="TabLayoutNavigatorActivity"
         android:gravity="center"
+        android:minHeight="50dp"
         android:onClick="onClick"
-        />
+        android:text="TabLayoutNavigatorActivity" />
+
     <TextView
         android:id="@+id/TabLayoutCustomeViewActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
-        android:text="TabLayoutCustomeViewNavigatorActivity"
         android:gravity="center"
+        android:minHeight="50dp"
         android:onClick="onClick"
-        />
+        android:visibility="gone"
+        android:text="TabLayoutCustomeViewNavigatorActivity" />
+
     <TextView
         android:id="@+id/TextViewNavigatorActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
-        android:text="TextViewNavigatorActivity"
         android:gravity="center"
+        android:minHeight="50dp"
         android:onClick="onClick"
-        />
+        android:visibility="gone"
+        android:text="TextViewNavigatorActivity" />
+
     <TextView
         android:id="@+id/TextViewViewPagerNavigatorActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
-        android:text="TextViewViewPagerNavigatorActivity"
         android:gravity="center"
+        android:minHeight="50dp"
         android:onClick="onClick"
-        />
+        android:visibility="gone"
+        android:text="TextViewViewPagerNavigatorActivity" />
+    <TextView
+        android:id="@+id/setText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="20dp"
+        android:onClick="onClick"
+        android:text="setText" />
+    <TextView
+        android:id="@+id/clearText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="20dp"
+        android:onClick="onClick"
+        android:text="clearText" />
+    <TextView
+        android:id="@+id/setTip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="20dp"
+        android:onClick="onClick"
+        android:text="setTip" />
+    <com.wisn.navigator.view.MyRadioButton
+        android:id="@+id/radiobutton_bg_watch"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#fdcdcd"
+        android:button="@null"
+        android:gravity="center"
+        android:text="Watch"
+        radiobutton:drawableSize="80dp"
+        radiobutton:drawableTop="@drawable/radiobutton_bg_watch"
+        radiobutton:tipCircleRedius="10dp"
+        radiobutton:tipText="44"
+        radiobutton:tipRediusMarginTop="10dp"
+        radiobutton:tipRediusMarginRight="5dp"
+        radiobutton:tipRedius="5dp"
+        radiobutton:tipTextSize="10dp" />
+    <com.wisn.navigator.view.MyTextView
+        android:id="@+id/MyTextView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#fdcdcd"
+        android:button="@null"
+        android:gravity="center"
+        android:text="Watch"
+        radiobutton:drawableSize="80dp"
+        radiobutton:drawableTop="@drawable/radiobutton_bg_watch"
+        radiobutton:tipCircleRedius="10dp"
+        radiobutton:tipText="44"
+        radiobutton:tipRediusMarginTop="10dp"
+        radiobutton:tipRediusMarginRight="5dp"
+        radiobutton:tipRedius="5dp"
+        radiobutton:tipTextSize="10dp"  />
 </LinearLayout>

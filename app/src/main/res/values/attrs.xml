@@ -6,5 +6,11 @@
         <attr name="drawableLeft" format="reference"/>
         <attr name="drawableRight" format="reference"/>
         <attr name="drawableBottom" format="reference"/>
+        <attr name="tipText" format="string"/>
+        <attr name="tipTextSize" format="dimension"/>
+        <attr name="tipCircleRedius" format="dimension"/>
+        <attr name="tipRedius" format="dimension"/>
+        <attr name="tipRediusMarginTop" format="dimension"/>
+        <attr name="tipRediusMarginRight" format="dimension"/>
     </declare-styleable>
 </resources>

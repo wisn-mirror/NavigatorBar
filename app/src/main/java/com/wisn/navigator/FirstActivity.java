@@ -12,14 +12,20 @@ import com.wisn.navigator.activity.TabLayoutCustomeViewNavigatorActivity;
 import com.wisn.navigator.activity.TextViewNavigatorActivity;
 import com.wisn.navigator.activity.TextViewViewPagerNavigatorActivity;
 import com.wisn.navigator.activity.RadioButtonViewPagerNavigatorActivity;
+import com.wisn.navigator.view.MyRadioButton;
+import com.wisn.navigator.view.MyTextView;
 
 public class FirstActivity extends AppCompatActivity {
+
+    private MyRadioButton mRadioButton;
+    private MyTextView MyTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-
+        mRadioButton = (MyRadioButton) findViewById(R.id.radiobutton_bg_watch);
+        MyTextView = (MyTextView) findViewById(R.id.MyTextView);
     }
 
     public void onClick(View view) {
@@ -42,6 +48,18 @@ public class FirstActivity extends AppCompatActivity {
                 break;
             case R.id.TextViewViewPagerNavigatorActivity:
                 startActivity(new Intent(this, TextViewViewPagerNavigatorActivity.class));
+                break;
+            case R.id.clearText:
+                mRadioButton.clearTip();
+                MyTextView.clearTip();
+                break;
+            case R.id.setText:
+                mRadioButton.setTipText("99");
+                MyTextView.setTipText("99");
+                break;
+            case R.id.setTip:
+                mRadioButton.setTip();
+                MyTextView.setTip();
                 break;
         }
     }
