@@ -14,5 +14,6 @@
         <attr name="tipRediusMarginRight" format="dimension"/>
         <attr name="tipTextColor" format="color"/>
         <attr name="tipBackground" format="color"/>
+        <attr name="isTip" format="boolean"/>
     </declare-styleable>
 </resources>

@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -31,6 +32,7 @@ public class MyTextView extends TextView {
     private Rect mRect;
     private String textMsg=null;
     private boolean isTip=false;
+
 
     public MyTextView(Context context) {
         super(context);
@@ -64,6 +66,8 @@ public class MyTextView extends TextView {
         tipTextColor = a.getColor(R.styleable.ButtonView_tipTextColor,Color.WHITE);
         tipBackground = a.getColor(R.styleable.ButtonView_tipBackground, Color.RED);
         textMsg = a.getString(R.styleable.ButtonView_tipText);
+        checkText(textMsg);
+        isTip = a.getBoolean(R.styleable.ButtonView_isTip,false);
         drawableTop= a.getDrawable(R.styleable.ButtonView_drawableTop);
         drawableBottom= a.getDrawable(R.styleable.ButtonView_drawableBottom);
         drawableRight= a.getDrawable(R.styleable.ButtonView_drawableRight);
@@ -71,7 +75,11 @@ public class MyTextView extends TextView {
         a.recycle();
         setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
         mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setFilterBitmap(true);
+        mPaint.setTypeface(Typeface.DEFAULT_BOLD);
         mRect = new Rect();
+
     }
 
     /**
@@ -95,27 +103,45 @@ public class MyTextView extends TextView {
         super.onDraw(canvas);
         if(mPaint==null)return ;
         int width = getMeasuredWidth();
-        if(textMsg!=null){
+        if(textMsg!=null&&!isTip){
             mPaint.setColor(tipBackground);
-            canvas.drawCircle(width - tipTextRedius*2-tipRediusMarginRight , tipRediusMarginTop+tipTextRedius, tipTextRedius, mPaint);
+            canvas.drawCircle(width/2+tipRediusMarginRight+tipTextRedius , tipRediusMarginTop+tipTextRedius, tipTextRedius, mPaint);
             mPaint.setColor(tipTextColor);
+            //先设置字体，否者第一次测量的字体大小和之后的大小不同
             mPaint.setTextSize(tipTextSize);
             mPaint.getTextBounds(textMsg, 0, textMsg.length(), mRect);
-            canvas.drawText(textMsg,
-                            width - tipTextRedius*2-tipRediusMarginRight-mRect.width()/2,
-                            tipRediusMarginTop+tipTextRedius+ mRect.height() / 2,
-                            mPaint);
+            if("1".equals(textMsg)){
+                canvas.drawText(textMsg,
+                                (float) (width / 2 + tipRediusMarginRight - (mRect.width() + mRect.width() / 2.2) / 2 + tipTextRedius),
+                                tipRediusMarginTop+tipTextRedius+mRect.height() / 2,
+                                mPaint);
+            }else{
+                canvas.drawText(textMsg,
+                                width/2+tipRediusMarginRight-mRect.width()/2+tipTextRedius,
+                                tipRediusMarginTop+tipTextRedius+mRect.height() / 2,
+                                mPaint);
+            }
+
         }else if(isTip){
             mPaint.setColor(tipBackground);
-            canvas.drawCircle(width - tipTextRedius*2-tipRediusMarginRight, tipRediusMarginTop+tipTextRedius, tipRedius, mPaint);
+            canvas.drawCircle(width/2+tipRediusMarginRight+tipRedius, tipRediusMarginTop+tipRedius, tipRedius, mPaint);
         }
 
     }
 
     public void setTipText(String text){
-        this.textMsg=text;
-        isTip=false;
-        invalidate();
+        if(text!=null){
+            checkText(text);
+            isTip=false;
+            invalidate();
+        }
+    }
+    public void checkText(String text){
+        if(text.length()>2){
+            this.textMsg="...";
+        }else{
+            this.textMsg=text;
+        }
     }
     public void clearTip(){
         this.textMsg=null;
@@ -127,6 +153,5 @@ public class MyTextView extends TextView {
         this.textMsg=null;
         invalidate();
     }
-
 
 }

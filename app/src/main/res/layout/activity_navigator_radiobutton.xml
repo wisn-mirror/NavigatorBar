@@ -23,6 +23,15 @@
             style="@style/rediobutton_style"
             radiobutton:drawableTop="@drawable/radiobutton_bg_home"
             radiobutton:drawableSize="30dp"
+            radiobutton:tipText="2"
+            radiobutton:tipTextRedius="10dp"
+            radiobutton:tipRediusMarginTop="4dp"
+            radiobutton:tipRediusMarginRight="8dp"
+            radiobutton:tipBackground="#e82540"
+            radiobutton:tipTextColor="#ffffff"
+            radiobutton:tipRedius="4dp"
+            radiobutton:isTip="false"
+            radiobutton:tipTextSize="12dp"
             android:text="Home" />
 
         <com.wisn.navigator.view.MyRadioButton
@@ -30,6 +39,15 @@
             style="@style/rediobutton_style"
             radiobutton:drawableTop="@drawable/radiobutton_bg_gift"
             radiobutton:drawableSize="30dp"
+            radiobutton:tipText="44"
+            radiobutton:tipTextRedius="10dp"
+            radiobutton:tipRediusMarginTop="4dp"
+            radiobutton:tipRediusMarginRight="8dp"
+            radiobutton:tipBackground="#e82540"
+            radiobutton:tipTextColor="#ffffff"
+            radiobutton:tipRedius="4dp"
+            radiobutton:isTip="false"
+            radiobutton:tipTextSize="12dp"
             android:text="Gift" />
 
         <com.wisn.navigator.view.MyRadioButton
@@ -37,6 +55,15 @@
             style="@style/rediobutton_style"
             radiobutton:drawableTop="@drawable/radiobutton_bg_start"
             radiobutton:drawableSize="30dp"
+            radiobutton:tipText="44"
+            radiobutton:tipTextRedius="10dp"
+            radiobutton:tipRediusMarginTop="4dp"
+            radiobutton:tipRediusMarginRight="8dp"
+            radiobutton:tipBackground="#e82540"
+            radiobutton:tipTextColor="#ffffff"
+            radiobutton:tipRedius="4dp"
+            radiobutton:isTip="true"
+            radiobutton:tipTextSize="12dp"
             android:text="Home" />
 
         <com.wisn.navigator.view.MyRadioButton
@@ -44,6 +71,30 @@
             style="@style/rediobutton_style"
             radiobutton:drawableTop="@drawable/radiobutton_bg_watch"
             radiobutton:drawableSize="30dp"
+            radiobutton:tipText="444324"
+            radiobutton:tipTextRedius="10dp"
+            radiobutton:tipRediusMarginTop="4dp"
+            radiobutton:tipRediusMarginRight="8dp"
+            radiobutton:tipBackground="#e82540"
+            radiobutton:tipTextColor="#ffffff"
+            radiobutton:tipRedius="5dp"
+            radiobutton:isTip="false"
+            radiobutton:tipTextSize="12dp"
+            android:text="Watch" />
+        <com.wisn.navigator.view.MyRadioButton
+            android:id="@+id/radiobutton_bg_watch2"
+            style="@style/rediobutton_style"
+            radiobutton:drawableTop="@drawable/radiobutton_bg_watch"
+            radiobutton:drawableSize="30dp"
+            radiobutton:tipText="1"
+            radiobutton:tipTextRedius="10dp"
+            radiobutton:tipRediusMarginTop="4dp"
+            radiobutton:tipRediusMarginRight="8dp"
+            radiobutton:tipBackground="#e82540"
+            radiobutton:tipTextColor="#ffffff"
+            radiobutton:tipRedius="4dp"
+            radiobutton:isTip="false"
+            radiobutton:tipTextSize="12dp"
             android:text="Watch" />
     </RadioGroup>
 
