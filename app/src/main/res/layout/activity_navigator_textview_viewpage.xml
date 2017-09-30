@@ -22,28 +22,32 @@
             android:id="@+id/home"
             style="@style/textview_style"
             android:text="home"
-            textview:drawableSize="30dp"
+            textview:tipText="434"
+            textview:isTip="true"
             textview:drawableTop="@drawable/home_0" />
 
         <com.wisn.navigator.view.MyTextView
             android:id="@+id/gift"
             style="@style/textview_style"
             android:text="gift"
-            textview:drawableSize="30dp"
+            textview:tipText="99"
+            textview:isTip="false"
             textview:drawableTop="@drawable/gift_0" />
 
         <com.wisn.navigator.view.MyTextView
             android:id="@+id/start"
             style="@style/textview_style"
             android:text="start"
-            textview:drawableSize="30dp"
+            textview:tipText="1"
+            textview:isTip="false"
             textview:drawableTop="@drawable/start_0" />
 
         <com.wisn.navigator.view.MyTextView
             android:id="@+id/watch"
             style="@style/textview_style"
             android:text="watch"
-            textview:drawableSize="30dp"
+            textview:tipText="33"
+            textview:isTip="false"
             textview:drawableTop="@drawable/watch_0" />
     </LinearLayout>
 

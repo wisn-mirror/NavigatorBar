@@ -20,6 +20,6 @@
         app:tabIndicatorHeight="0dp"
         app:tabSelectedTextColor="#7c1b17"
         app:tabTextAppearance="@style/tabLayoutTextSizeStyle"
-        app:tabTextColor="#837f7f" ></android.support.design.widget.TabLayout>
+        app:tabTextColor="#837f7f" />
 
 </RelativeLayout>

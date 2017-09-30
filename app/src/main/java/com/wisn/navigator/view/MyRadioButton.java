@@ -9,7 +9,6 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import android.widget.RadioButton;
 
@@ -60,7 +59,7 @@ public class MyRadioButton extends RadioButton {
         tipTextColor = a.getColor(R.styleable.ButtonView_tipTextColor,Color.WHITE);
         tipBackground = a.getColor(R.styleable.ButtonView_tipBackground, Color.RED);
         textMsg = a.getString(R.styleable.ButtonView_tipText);
-        checkText(textMsg);
+        if(textMsg!=null)checkText(textMsg);
         isTip = a.getBoolean(R.styleable.ButtonView_isTip,false);
         drawableTop= a.getDrawable(R.styleable.ButtonView_drawableTop);
         drawableBottom= a.getDrawable(R.styleable.ButtonView_drawableBottom);
@@ -119,6 +118,11 @@ public class MyRadioButton extends RadioButton {
                 canvas.drawCircle(width/2+tipRediusMarginRight+tipRedius, tipRediusMarginTop+tipRedius, tipRedius, mPaint);
             }
 
+    }
+
+    public void setTipBackground(int background) {
+        this.tipBackground = background;
+        invalidate();
     }
 
     public void setTipText(String text){

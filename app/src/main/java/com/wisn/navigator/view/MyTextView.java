@@ -10,7 +10,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.wisn.navigator.R;
@@ -30,8 +29,8 @@ public class MyTextView extends TextView {
     private int tipBackground;
     private Paint mPaint;
     private Rect mRect;
-    private String textMsg=null;
-    private boolean isTip=false;
+    private String textMsg = null;
+    private boolean isTip = false;
 
 
     public MyTextView(Context context) {
@@ -63,15 +62,15 @@ public class MyTextView extends TextView {
         tipRedius = a.getDimensionPixelSize(R.styleable.ButtonView_tipRedius, 10);
         tipRediusMarginTop = a.getDimensionPixelSize(R.styleable.ButtonView_tipRediusMarginTop, 10);
         tipRediusMarginRight = a.getDimensionPixelSize(R.styleable.ButtonView_tipRediusMarginRight, 10);
-        tipTextColor = a.getColor(R.styleable.ButtonView_tipTextColor,Color.WHITE);
+        tipTextColor = a.getColor(R.styleable.ButtonView_tipTextColor, Color.WHITE);
         tipBackground = a.getColor(R.styleable.ButtonView_tipBackground, Color.RED);
         textMsg = a.getString(R.styleable.ButtonView_tipText);
-        checkText(textMsg);
-        isTip = a.getBoolean(R.styleable.ButtonView_isTip,false);
-        drawableTop= a.getDrawable(R.styleable.ButtonView_drawableTop);
-        drawableBottom= a.getDrawable(R.styleable.ButtonView_drawableBottom);
-        drawableRight= a.getDrawable(R.styleable.ButtonView_drawableRight);
-        drawableLeft= a.getDrawable(R.styleable.ButtonView_drawableLeft);
+        if (textMsg != null) checkText(textMsg);
+        isTip = a.getBoolean(R.styleable.ButtonView_isTip, false);
+        drawableTop = a.getDrawable(R.styleable.ButtonView_drawableTop);
+        drawableBottom = a.getDrawable(R.styleable.ButtonView_drawableBottom);
+        drawableRight = a.getDrawable(R.styleable.ButtonView_drawableRight);
+        drawableLeft = a.getDrawable(R.styleable.ButtonView_drawableLeft);
         a.recycle();
         setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
         mPaint = new Paint();
@@ -90,10 +89,10 @@ public class MyTextView extends TextView {
                                                         Drawable top,
                                                         Drawable right,
                                                         Drawable bottom) {
-        if (left != null)left.setBounds(0, 0, mDrawableSize, mDrawableSize);
+        if (left != null) left.setBounds(0, 0, mDrawableSize, mDrawableSize);
         if (right != null) right.setBounds(0, 0, mDrawableSize, mDrawableSize);
         if (top != null) top.setBounds(0, 0, mDrawableSize, mDrawableSize);
-        if (bottom != null)bottom.setBounds(0, 0, mDrawableSize, mDrawableSize);
+        if (bottom != null) bottom.setBounds(0, 0, mDrawableSize, mDrawableSize);
         setCompoundDrawables(left, top, right, bottom);
 
     }
@@ -101,56 +100,71 @@ public class MyTextView extends TextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if(mPaint==null)return ;
+        if (mPaint == null) return;
         int width = getMeasuredWidth();
-        if(textMsg!=null&&!isTip){
+        if (textMsg != null && !isTip) {
             mPaint.setColor(tipBackground);
-            canvas.drawCircle(width/2+tipRediusMarginRight+tipTextRedius , tipRediusMarginTop+tipTextRedius, tipTextRedius, mPaint);
+            canvas.drawCircle(width / 2 + tipRediusMarginRight + tipTextRedius,
+                              tipRediusMarginTop + tipTextRedius,
+                              tipTextRedius,
+                              mPaint);
             mPaint.setColor(tipTextColor);
             //先设置字体，否者第一次测量的字体大小和之后的大小不同
             mPaint.setTextSize(tipTextSize);
             mPaint.getTextBounds(textMsg, 0, textMsg.length(), mRect);
-            if("1".equals(textMsg)){
+            if ("1".equals(textMsg)) {
                 canvas.drawText(textMsg,
-                                (float) (width / 2 + tipRediusMarginRight - (mRect.width() + mRect.width() / 2.2) / 2 + tipTextRedius),
-                                tipRediusMarginTop+tipTextRedius+mRect.height() / 2,
+                                (float) (width / 2 + tipRediusMarginRight -
+                                         (mRect.width() + mRect.width() / 2.2) / 2 + tipTextRedius),
+                                tipRediusMarginTop + tipTextRedius + mRect.height() / 2,
                                 mPaint);
-            }else{
+            } else {
                 canvas.drawText(textMsg,
-                                width/2+tipRediusMarginRight-mRect.width()/2+tipTextRedius,
-                                tipRediusMarginTop+tipTextRedius+mRect.height() / 2,
+                                width / 2 + tipRediusMarginRight - mRect.width() / 2 + tipTextRedius,
+                                tipRediusMarginTop + tipTextRedius + mRect.height() / 2,
                                 mPaint);
             }
 
-        }else if(isTip){
+        } else if (isTip) {
             mPaint.setColor(tipBackground);
-            canvas.drawCircle(width/2+tipRediusMarginRight+tipRedius, tipRediusMarginTop+tipRedius, tipRedius, mPaint);
+            canvas.drawCircle(width / 2 + tipRediusMarginRight + tipRedius,
+                              tipRediusMarginTop + tipRedius,
+                              tipRedius,
+                              mPaint);
         }
 
     }
 
-    public void setTipText(String text){
-        if(text!=null){
+    public void setTipBackground(int background) {
+        this.tipBackground = background;
+        invalidate();
+    }
+
+    public void setTipText(String text) {
+        if (text != null) {
             checkText(text);
-            isTip=false;
+            isTip = false;
             invalidate();
         }
     }
-    public void checkText(String text){
-        if(text.length()>2){
-            this.textMsg="...";
-        }else{
-            this.textMsg=text;
+
+    public void checkText(String text) {
+        if (text.length() > 2) {
+            this.textMsg = "...";
+        } else {
+            this.textMsg = text;
         }
     }
-    public void clearTip(){
-        this.textMsg=null;
-        isTip=false;
+
+    public void clearTip() {
+        this.textMsg = null;
+        isTip = false;
         invalidate();
     }
-    public void setTip(){
-        isTip=true;
-        this.textMsg=null;
+
+    public void setTip() {
+        isTip = true;
+        this.textMsg = null;
         invalidate();
     }
 

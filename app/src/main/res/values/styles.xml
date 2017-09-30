@@ -1,5 +1,5 @@
 <resources>
-    <style name="rediobutton_style" >
+    <style name="rediobutton_style"  >
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
@@ -13,6 +13,14 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">12dp</item>
         <item name="android:textColor">@drawable/radiobutton_bottom_textcolor</item>
+        <item name="drawableSize">30dp</item>
+        <item name="tipTextRedius">10dp</item>
+        <item name="tipRediusMarginTop">4dp</item>
+        <item name="tipRediusMarginRight">8dp</item>
+        <item name="tipBackground">#e82540</item>
+        <item name="tipTextColor">#ffffff</item>
+        <item name="tipRedius">5dp</item>
+        <item name="tipTextSize">12dp</item>
     </style>
     <style name="textview_style" >
         <item name="android:layout_width">0dp</item>
@@ -27,6 +35,14 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">12dp</item>
         <item name="android:textColor">@drawable/radiobutton_bottom_textcolor</item>
+        <item name="drawableSize">30dp</item>
+        <item name="tipTextRedius">10dp</item>
+        <item name="tipRediusMarginTop">4dp</item>
+        <item name="tipRediusMarginRight">8dp</item>
+        <item name="tipBackground">#e82540</item>
+        <item name="tipTextColor">#ffffff</item>
+        <item name="tipRedius">5dp</item>
+        <item name="tipTextSize">12dp</item>
     </style>
     <style name="tabTextSizeStyle">
         <item name="android:textSize">12dp</item>

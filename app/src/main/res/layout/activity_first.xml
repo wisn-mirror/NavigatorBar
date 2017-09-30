@@ -42,7 +42,6 @@
         android:gravity="center"
         android:minHeight="50dp"
         android:onClick="onClick"
-        android:visibility="gone"
         android:text="TabLayoutCustomeViewNavigatorActivity" />
 
     <TextView
@@ -52,7 +51,6 @@
         android:gravity="center"
         android:minHeight="50dp"
         android:onClick="onClick"
-        android:visibility="gone"
         android:text="TextViewNavigatorActivity" />
 
     <TextView
@@ -62,7 +60,6 @@
         android:gravity="center"
         android:minHeight="50dp"
         android:onClick="onClick"
-        android:visibility="gone"
         android:text="TextViewViewPagerNavigatorActivity" />
     <TextView
         android:id="@+id/setText"
@@ -88,7 +85,7 @@
         android:minHeight="20dp"
         android:onClick="onClick"
         android:text="setTip" />
-    <com.wisn.navigator.view.MyRadioButton
+  <!--  <com.wisn.navigator.view.MyRadioButton
         android:id="@+id/radiobutton_bg_watch"
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -123,5 +120,5 @@
         radiobutton:tipBackground="#18e409"
         radiobutton:tipTextColor="#ff9409"
         radiobutton:tipRedius="5dp"
-        radiobutton:tipTextSize="10dp"  />
+        radiobutton:tipTextSize="10dp"  />-->
 </LinearLayout>
