@@ -61,7 +61,7 @@
         android:minHeight="50dp"
         android:onClick="onClick"
         android:text="TextViewViewPagerNavigatorActivity" />
-    <TextView
+  <!--  <TextView
         android:id="@+id/setText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         android:gravity="center"
         android:minHeight="20dp"
         android:onClick="onClick"
-        android:text="setTip" />
+        android:text="setTip" />-->
   <!--  <com.wisn.navigator.view.MyRadioButton
         android:id="@+id/radiobutton_bg_watch"
         android:layout_width="300dp"

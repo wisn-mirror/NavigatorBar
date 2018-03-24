@@ -2,6 +2,7 @@ package com.wisn.navigator.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
@@ -28,6 +29,8 @@ public class TabLayoutNavigatorActivity extends AppCompatActivity implements Tab
         setContentView(R.layout.activity_navigator_tab_layout);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mTablelayout = (TabLayout) findViewById(R.id.tablelayout);
+        ViewCompat.setElevation(mTablelayout, 10);
+
         data.add("HomeFragment");
         data.add("GiftFragment");
         data.add("StartFragment");
@@ -36,7 +39,6 @@ public class TabLayoutNavigatorActivity extends AppCompatActivity implements Tab
                 fragmentPagerAdapter =
                 new TabLayoutFragmentAdapter(getSupportFragmentManager(), data, images, data);
         mViewPager.setAdapter(fragmentPagerAdapter);
-        mViewPager.setCurrentItem(0);
         mTablelayout.setupWithViewPager(mViewPager);
         mTablelayout.setTabMode(TabLayout.MODE_FIXED);
         mTablelayout.getTabAt(0).setIcon(R.drawable.home_1).setText("HomeFragment");
@@ -44,6 +46,7 @@ public class TabLayoutNavigatorActivity extends AppCompatActivity implements Tab
         mTablelayout.getTabAt(2).setIcon(R.drawable.start_0).setText("StartFragment");
         mTablelayout.getTabAt(3).setIcon(R.drawable.watch_0).setText("WatchFragment");
         mTablelayout.addOnTabSelectedListener(this);
+        mViewPager.setCurrentItem(0);
     }
 
     @Override
@@ -54,6 +57,7 @@ public class TabLayoutNavigatorActivity extends AppCompatActivity implements Tab
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
+        tab.isSelected();
         CharSequence text = tab.getText();
         if (text.equals("HomeFragment")) {
             tab.setIcon(R.drawable.home_1);

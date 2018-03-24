@@ -51,6 +51,7 @@
     <style name="tabLayoutTextSizeStyle"  parent="TextAppearance.Design.Tab">
         <item name="android:textSize">12dp</item>
         <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">

@@ -24,7 +24,7 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        mRadioButton = (MyRadioButton) findViewById(R.id.radiobutton_bg_watch);
+//        mRadioButton = (MyRadioButton) findViewById(R.id.radiobutton_bg_watch);
 //        MyTextView = (MyTextView) findViewById(R.id.MyTextView);
     }
 
@@ -49,7 +49,7 @@ public class FirstActivity extends AppCompatActivity {
             case R.id.TextViewViewPagerNavigatorActivity:
                 startActivity(new Intent(this, TextViewViewPagerNavigatorActivity.class));
                 break;
-            case R.id.clearText:
+           /* case R.id.clearText:
                 mRadioButton.clearTip();
 //                MyTextView.clearTip();
                 break;
@@ -60,7 +60,7 @@ public class FirstActivity extends AppCompatActivity {
             case R.id.setTip:
                 mRadioButton.setTip();
 //                MyTextView.setTip();
-                break;
+                break;*/
         }
     }
 }

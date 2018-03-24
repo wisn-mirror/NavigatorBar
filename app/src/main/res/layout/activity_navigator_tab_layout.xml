@@ -18,8 +18,9 @@
         android:layout_height="56dp"
         app:tabBackground="@android:color/white"
         app:tabIndicatorHeight="0dp"
-        app:tabSelectedTextColor="#7c1b17"
+        app:tabSelectedTextColor="#c14949"
+        app:tabTextColor="#837f7f"
         app:tabTextAppearance="@style/tabLayoutTextSizeStyle"
-        app:tabTextColor="#837f7f" />
+       />
 
 </RelativeLayout>
