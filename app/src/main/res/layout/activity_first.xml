@@ -7,7 +7,12 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context="com.wisn.navigator.FirstActivity">
-
+    <ImageView
+        android:id="@+id/iv_target"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#9E2626"
+        />
     <TextView
         android:id="@+id/radioButton"
         android:layout_width="match_parent"
@@ -61,6 +66,15 @@
         android:minHeight="50dp"
         android:onClick="onClick"
         android:text="TextViewViewPagerNavigatorActivity" />
+
+    <TextView
+        android:id="@+id/NeticonrNavigatorActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:onClick="onClick"
+        android:text="NeticonrNavigatorActivity" />
   <!--  <TextView
         android:id="@+id/setText"
         android:layout_width="match_parent"
