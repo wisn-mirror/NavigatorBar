@@ -85,34 +85,39 @@
 
             <Button
                 android:id="@+id/button8"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
                 android:text="M1" />
 
             <Button
                 android:id="@+id/button9"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
                 android:text="M99" />
             <Button
                 android:id="@+id/button12"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
                 android:text="M999" />
 
             <Button
                 android:id="@+id/button10"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
                 android:text="tip" />
 
             <Button
                 android:id="@+id/button11"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
                 android:text="clear" />

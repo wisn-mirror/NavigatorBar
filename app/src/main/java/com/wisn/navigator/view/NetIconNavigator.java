@@ -18,6 +18,7 @@ import com.wisn.navigator.R;
 import com.wisn.navigator.bean.TabBean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,11 +30,11 @@ public class NetIconNavigator extends FrameLayout {
     private LinearLayout mTabLinearLayout;
     private Context mContext;
     private ArrayList<TabBean> mTabBeans = new ArrayList<>();
+    private HashMap<String, TabBean> urlMap = new HashMap<>();
     private OnTabSelectListener mListener;
     private int mLastSelectPosition;
     private RequestOptions requestOptions;
     private boolean isDeault = true;
-    private int[][] ints;
 
     public void setmListener(OnTabSelectListener mListener) {
         this.mListener = mListener;
@@ -67,6 +68,7 @@ public class NetIconNavigator extends FrameLayout {
         if (tabBeans == null || tabBeans.size() == 0) {
             throw new IllegalStateException("TabEntitys can not be NULL or EMPTY !");
         }
+        urlMap.clear();
         this.mTabBeans.clear();
         this.mTabBeans.addAll(tabBeans);
         notifyDataSetChanged(select);
@@ -74,9 +76,11 @@ public class NetIconNavigator extends FrameLayout {
     }
 
 
-    public void setDefaultIcon(int[][] resid, int select) {
+    public void setDefaultIcon(List<TabBean> resid, int select) {
         isDeault = true;
-        ints = resid;
+        urlMap.clear();
+        this.mTabBeans.clear();
+        this.mTabBeans.addAll(resid);
         notifyDataSetChanged(select);
         this.mLastSelectPosition = select;
     }
@@ -85,13 +89,17 @@ public class NetIconNavigator extends FrameLayout {
     //更新数据
     private void notifyDataSetChanged(int select) {
         mTabLinearLayout.removeAllViews();
-        int mTabCount = isDeault ? ints.length : mTabBeans.size();
+        int mTabCount = mTabBeans.size();
         for (int i = 0; i < mTabCount; i++) {
             View tabView = View.inflate(mContext, R.layout.layout_coutomizetab_top, null);
             NavigatorViewHolder navigatorViewHolder = new NavigatorViewHolder(tabView);
+            TabBean tabBean = mTabBeans.get(i);
+            tabBean.__position = i;
             navigatorViewHolder.position = i;
+            navigatorViewHolder.url = tabBean.url;
+            urlMap.put(tabBean.url, tabBean);
             tabView.setTag(navigatorViewHolder);
-            upateSelectState(select == i, i, tabView);
+            upateSelectState(select == i, i, tabView, tabBean);
             tabView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -100,11 +108,11 @@ public class NetIconNavigator extends FrameLayout {
                         if (mLastSelectPosition != navigatorViewHolder.position) {
                             updateTabSelection(navigatorViewHolder.position);
                             if (mListener != null) {
-                                mListener.onTabSelect(navigatorViewHolder.position);
+                                mListener.onTabSelect(navigatorViewHolder.position, navigatorViewHolder.url);
                             }
                         } else {
                             if (mListener != null) {
-                                mListener.onTabReselect(navigatorViewHolder.position);
+                                mListener.onTabReselect(navigatorViewHolder.position, navigatorViewHolder.url);
                             }
                         }
                     } catch (Exception e) {
@@ -118,14 +126,13 @@ public class NetIconNavigator extends FrameLayout {
 
     }
 
-    private void upateSelectState(boolean isSelect, int position, View tabView) {
+    private void upateSelectState(boolean isSelect, int position, View tabView, TabBean tabBean) {
         try {
             NavigatorViewHolder navigatorViewHolder = getNavigatorViewHolder(position, tabView);
             if (isDeault) {
-                navigatorViewHolder.tv_tab_title.setText(getResources().getString(ints[position][2]));
-                navigatorViewHolder.iv_tab_icon.setImageResource(isSelect ? ints[position][1] : ints[position][0]);
+                navigatorViewHolder.tv_tab_title.setText(tabBean.text);
+                navigatorViewHolder.iv_tab_icon.setImageResource(isSelect ? tabBean.resid[1] : tabBean.resid[0]);
             } else {
-                TabBean tabBean = mTabBeans.get(position);
                 navigatorViewHolder.tv_tab_title.setText(tabBean.text);
                 String unSelectUrl = tabBean.src;
                 String SelectUrl = tabBean.srcUsed;
@@ -162,20 +169,45 @@ public class NetIconNavigator extends FrameLayout {
     //更新tab
     public void updateTabSelection(int position) {
         try {
-            if(mTabLinearLayout==null)return ;
+            if (mTabLinearLayout == null) return;
             View tabViewOld = mTabLinearLayout.getChildAt(mLastSelectPosition);
-            upateSelectState(false, mLastSelectPosition, tabViewOld);
+            upateSelectState(false, mLastSelectPosition, tabViewOld, mTabBeans.get(mLastSelectPosition));
             View tabViewNew = mTabLinearLayout.getChildAt(position);
-            upateSelectState(true, position, tabViewNew);
+            upateSelectState(true, position, tabViewNew, mTabBeans.get(position));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    //更新tab
+    public void updateTabSelection(String url) {
+        try {
+            if (mTabLinearLayout == null) return;
+            TabBean tabBeannew = urlMap.get(url);
+            if (tabBeannew != null) {
+                View tabViewOld = mTabLinearLayout.getChildAt(mLastSelectPosition);
+                upateSelectState(false, mLastSelectPosition, tabViewOld, mTabBeans.get(mLastSelectPosition));
+                View tabViewNew = mTabLinearLayout.getChildAt(tabBeannew.__position);
+                upateSelectState(true, tabBeannew.__position, tabViewNew, tabBeannew);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setTip(String url) {
+        TabBean tabBeannew = urlMap.get(url);
+        if (tabBeannew != null) {
+            setTip(tabBeannew.__position);
+        }
+    }
+
     public void setTip(int position) {
         try {
-            if(mTabLinearLayout==null)return ;
-            View tabView= mTabLinearLayout.getChildAt(position);
+            if (mTabLinearLayout == null) return;
+            View tabView = mTabLinearLayout.getChildAt(position);
             NavigatorViewHolder navigatorViewHolder = getNavigatorViewHolder(position, tabView);
             navigatorViewHolder.tv_tab_msg_tip.setVisibility(View.VISIBLE);
             navigatorViewHolder.tv_tab_msg.setVisibility(View.GONE);
@@ -184,8 +216,15 @@ public class NetIconNavigator extends FrameLayout {
         }
     }
 
+    public void setTipMsg(String url, String msg) {
+        TabBean tabBeannew = urlMap.get(url);
+        if (tabBeannew != null) {
+            setTipMsg(tabBeannew.__position,msg);
+        }
+    }
+
     public void setTipMsg(int position, String msg) {
-        if(mTabLinearLayout==null)return ;
+        if (mTabLinearLayout == null) return;
 
         try {
             if (TextUtils.isEmpty(msg)) {
@@ -202,6 +241,13 @@ public class NetIconNavigator extends FrameLayout {
         }
     }
 
+    public void setTipMsg(String url, int msg) {
+        TabBean tabBeannew = urlMap.get(url);
+        if (tabBeannew != null) {
+            setTipMsg(tabBeannew.__position,msg);
+        }
+    }
+
     public void setTipMsg(int position, int msg) {
         if (msg == 0) {
             clearTipMessage(position);
@@ -210,8 +256,15 @@ public class NetIconNavigator extends FrameLayout {
         }
     }
 
+    public void clearTipMessage(String url) {
+        TabBean tabBeannew = urlMap.get(url);
+        if (tabBeannew != null) {
+            clearTipMessage(tabBeannew.__position);
+        }
+    }
+
     public void clearTipMessage(int position) {
-        if(mTabLinearLayout==null)return ;
+        if (mTabLinearLayout == null) return;
 
         try {
             View tabView = mTabLinearLayout.getChildAt(position);
@@ -225,9 +278,9 @@ public class NetIconNavigator extends FrameLayout {
 
 
     public interface OnTabSelectListener {
-        void onTabSelect(int position);
+        void onTabSelect(int position, String url);
 
-        void onTabReselect(int position);
+        void onTabReselect(int position, String url);
     }
 
     public class NavigatorViewHolder {
@@ -236,6 +289,7 @@ public class NetIconNavigator extends FrameLayout {
         ImageView tv_tab_msg_tip;
         TextView tv_tab_msg;
         public int position;
+        public String url;
 
         public NavigatorViewHolder(View tabView) {
             tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);

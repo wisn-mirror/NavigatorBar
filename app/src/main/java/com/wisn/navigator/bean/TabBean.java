@@ -18,11 +18,26 @@ public class TabBean {
     public String src;
     public String url;
     public int[] resid;
+    public int __position;
 
     public TabBean(String text, String srcUsed, String src, String url) {
         this.text = text;
         this.srcUsed = srcUsed;
         this.src = src;
+        this.url = url;
+    }
+
+    /**
+     * @param text
+     * @param srcUsed 选中id
+     * @param src     未选中id
+     * @param url
+     */
+    public TabBean(String text, int srcUsed, int src, String url) {
+        this.text = text;
+        resid = new int[2];
+        resid[0] = src;
+        resid[1] = srcUsed;
         this.url = url;
     }
 
