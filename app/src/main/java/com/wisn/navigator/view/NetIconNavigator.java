@@ -1,6 +1,8 @@
 package com.wisn.navigator.view;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -30,7 +32,7 @@ public class NetIconNavigator extends FrameLayout {
     private OnTabSelectListener mListener;
     private int mLastSelectPosition;
     private RequestOptions requestOptions;
-    private boolean isDeault=true;
+    private boolean isDeault = true;
     private int[][] ints;
 
     public void setmListener(OnTabSelectListener mListener) {
@@ -61,7 +63,7 @@ public class NetIconNavigator extends FrameLayout {
 
     //添加导航栏数据
     public void setNetTabDate(List<TabBean> tabBeans, int select) {
-        isDeault=false;
+        isDeault = false;
         if (tabBeans == null || tabBeans.size() == 0) {
             throw new IllegalStateException("TabEntitys can not be NULL or EMPTY !");
         }
@@ -71,9 +73,10 @@ public class NetIconNavigator extends FrameLayout {
         this.mLastSelectPosition = select;
     }
 
-    public void setDefaultIcon(int[][] resid,int select){
-        isDeault=true;
-        ints =resid;
+
+    public void setDefaultIcon(int[][] resid, int select) {
+        isDeault = true;
+        ints = resid;
         notifyDataSetChanged(select);
         this.mLastSelectPosition = select;
     }
@@ -82,24 +85,30 @@ public class NetIconNavigator extends FrameLayout {
     //更新数据
     private void notifyDataSetChanged(int select) {
         mTabLinearLayout.removeAllViews();
-        int   mTabCount =isDeault? ints.length:mTabBeans.size();
+        int mTabCount = isDeault ? ints.length : mTabBeans.size();
         for (int i = 0; i < mTabCount; i++) {
             View tabView = View.inflate(mContext, R.layout.layout_coutomizetab_top, null);
-            tabView.setTag(i);
+            NavigatorViewHolder navigatorViewHolder = new NavigatorViewHolder(tabView);
+            navigatorViewHolder.position = i;
+            tabView.setTag(navigatorViewHolder);
             upateSelectState(select == i, i, tabView);
             tabView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = (Integer) v.getTag();
-                    if (mLastSelectPosition != position) {
-                        updateTabSelection(position);
-                        if (mListener != null) {
-                            mListener.onTabSelect(position);
+                    try {
+                        NavigatorViewHolder navigatorViewHolder = (NavigatorViewHolder) v.getTag();
+                        if (mLastSelectPosition != navigatorViewHolder.position) {
+                            updateTabSelection(navigatorViewHolder.position);
+                            if (mListener != null) {
+                                mListener.onTabSelect(navigatorViewHolder.position);
+                            }
+                        } else {
+                            if (mListener != null) {
+                                mListener.onTabReselect(navigatorViewHolder.position);
+                            }
                         }
-                    } else {
-                        if (mListener != null) {
-                            mListener.onTabReselect(position);
-                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
             });
@@ -110,35 +119,108 @@ public class NetIconNavigator extends FrameLayout {
     }
 
     private void upateSelectState(boolean isSelect, int position, View tabView) {
-
-        TextView tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
-        ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
-        if(isDeault){
-            tv_tab_title.setText(getResources().getString(ints[position][2]));
-            iv_tab_icon.setImageResource(isSelect?ints[position][1]:ints[position][0]);
-        }else{
-            TabBean tabBean = mTabBeans.get(position);
-            tv_tab_title.setText(tabBean.text);
-            String unSelectUrl = tabBean.src;
-            String SelectUrl = tabBean.srcUsed;
-            Glide.with(this)
-                    .load(isSelect ? SelectUrl : unSelectUrl)
-                    .apply(requestOptions)
-                    .into(iv_tab_icon);
+        try {
+            NavigatorViewHolder navigatorViewHolder = getNavigatorViewHolder(position, tabView);
+            if (isDeault) {
+                navigatorViewHolder.tv_tab_title.setText(getResources().getString(ints[position][2]));
+                navigatorViewHolder.iv_tab_icon.setImageResource(isSelect ? ints[position][1] : ints[position][0]);
+            } else {
+                TabBean tabBean = mTabBeans.get(position);
+                navigatorViewHolder.tv_tab_title.setText(tabBean.text);
+                String unSelectUrl = tabBean.src;
+                String SelectUrl = tabBean.srcUsed;
+                Glide.with(this)
+                        .load(isSelect ? SelectUrl : unSelectUrl)
+                        .apply(requestOptions)
+                        .into(navigatorViewHolder.iv_tab_icon);
+            }
+            if (isSelect) {
+                mLastSelectPosition = position;
+            }
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
         }
-        if (isSelect) {
-            mLastSelectPosition = position;
-        }
-
     }
 
+    private NavigatorViewHolder getNavigatorViewHolder(int position, View tabView) {
+        NavigatorViewHolder navigatorViewHolder = null;
+        try {
+            Object tag = tabView.getTag();
+            if (tag != null && tag instanceof NavigatorViewHolder) {
+                navigatorViewHolder = (NavigatorViewHolder) tag;
+            } else {
+                navigatorViewHolder = new NavigatorViewHolder(tabView);
+                navigatorViewHolder.position = position;
+                tabView.setTag(navigatorViewHolder);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return navigatorViewHolder;
+    }
 
     //更新tab
-    public  void updateTabSelection(int position) {
-        View tabViewOld = mTabLinearLayout.getChildAt(mLastSelectPosition);
-        upateSelectState(false, mLastSelectPosition, tabViewOld);
-        View tabViewNew = mTabLinearLayout.getChildAt(position);
-        upateSelectState(true, position, tabViewNew);
+    public void updateTabSelection(int position) {
+        try {
+            if(mTabLinearLayout==null)return ;
+            View tabViewOld = mTabLinearLayout.getChildAt(mLastSelectPosition);
+            upateSelectState(false, mLastSelectPosition, tabViewOld);
+            View tabViewNew = mTabLinearLayout.getChildAt(position);
+            upateSelectState(true, position, tabViewNew);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setTip(int position) {
+        try {
+            if(mTabLinearLayout==null)return ;
+            View tabView= mTabLinearLayout.getChildAt(position);
+            NavigatorViewHolder navigatorViewHolder = getNavigatorViewHolder(position, tabView);
+            navigatorViewHolder.tv_tab_msg_tip.setVisibility(View.VISIBLE);
+            navigatorViewHolder.tv_tab_msg.setVisibility(View.GONE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setTipMsg(int position, String msg) {
+        if(mTabLinearLayout==null)return ;
+
+        try {
+            if (TextUtils.isEmpty(msg)) {
+                clearTipMessage(position);
+            } else {
+                View tabView = mTabLinearLayout.getChildAt(position);
+                NavigatorViewHolder navigatorViewHolder = getNavigatorViewHolder(position, tabView);
+                navigatorViewHolder.tv_tab_msg_tip.setVisibility(View.GONE);
+                navigatorViewHolder.tv_tab_msg.setVisibility(View.VISIBLE);
+                navigatorViewHolder.tv_tab_msg.setText(msg);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setTipMsg(int position, int msg) {
+        if (msg == 0) {
+            clearTipMessage(position);
+        } else {
+            setTipMsg(position, String.valueOf(msg));
+        }
+    }
+
+    public void clearTipMessage(int position) {
+        if(mTabLinearLayout==null)return ;
+
+        try {
+            View tabView = mTabLinearLayout.getChildAt(position);
+            NavigatorViewHolder navigatorViewHolder = getNavigatorViewHolder(position, tabView);
+            navigatorViewHolder.tv_tab_msg_tip.setVisibility(View.GONE);
+            navigatorViewHolder.tv_tab_msg.setVisibility(View.GONE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -148,5 +230,19 @@ public class NetIconNavigator extends FrameLayout {
         void onTabReselect(int position);
     }
 
+    public class NavigatorViewHolder {
+        TextView tv_tab_title;
+        ImageView iv_tab_icon;
+        ImageView tv_tab_msg_tip;
+        TextView tv_tab_msg;
+        public int position;
+
+        public NavigatorViewHolder(View tabView) {
+            tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
+            iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
+            tv_tab_msg_tip = (ImageView) tabView.findViewById(R.id.tv_tab_msg_tip);
+            tv_tab_msg = (TextView) tabView.findViewById(R.id.tv_tab_msg);
+        }
+    }
 
 }

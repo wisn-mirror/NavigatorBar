@@ -10,8 +10,8 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_launcher"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/tv_tab_title"
@@ -20,9 +20,36 @@
         android:layout_below="@+id/iv_tab_icon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5px"
-        android:text="33"
         android:singleLine="true"
+        android:text="33"
         android:textSize="14sp" />
 
+    <TextView
+        android:id="@+id/tv_tab_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:minWidth="12dp"
+        android:layout_marginLeft="-4dp"
+        android:layout_marginTop="1px"
+        android:layout_toRightOf="@+id/iv_tab_icon"
+        android:background="@drawable/shape_background_radius_14"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:singleLine="true"
+        android:text="2"
+        android:textColor="#fff"
+        android:textSize="8sp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/tv_tab_msg_tip"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/iv_tab_icon"
+        android:background="@drawable/shape_background_radius_14"
+        android:visibility="gone" />
 
 </RelativeLayout>

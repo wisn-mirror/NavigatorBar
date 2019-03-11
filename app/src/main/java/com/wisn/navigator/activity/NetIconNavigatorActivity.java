@@ -34,16 +34,29 @@ public class NetIconNavigatorActivity extends AppCompatActivity implements View.
     public int[][] resicon = {
             {
                     R.drawable.gift_0,
-                    R.drawable.gift_1,R.string.main_home},
+                    R.drawable.gift_1, R.string.main_home},
             {
                     R.drawable.home_0,
-                    R.drawable.home_1,R.string.main_classification},
+                    R.drawable.home_1, R.string.main_classification},
             {
                     R.drawable.start_0,
-                    R.drawable.start_1,R.string.main_community},
+                    R.drawable.start_1, R.string.main_community},
             {
                     R.drawable.watch_0,
-                    R.drawable.watch_1,R.string.main_hapgasstation}};
+                    R.drawable.watch_1, R.string.main_hapgasstation}};
+    public int[][] resicon2 = {
+            {
+                    R.drawable.app_icon_home_normal,
+                    R.drawable.app_icon_home_selected, R.string.main_home},
+            {
+                    R.drawable.app_icon_mall_normal,
+                    R.drawable.app_icon_mall_selected, R.string.main_classification},
+            {
+                    R.drawable.app_icon_im_normal,
+                    R.drawable.app_icon_im_selected, R.string.main_community},
+            {
+                    R.drawable.app_icon_mine_normal,
+                    R.drawable.app_icon_mine_selected, R.string.main_hapgasstation}};
     private NetIconNavigator bottom_radiogroup;
     private TextView textview1;
 
@@ -59,12 +72,12 @@ public class NetIconNavigatorActivity extends AppCompatActivity implements View.
         bottom_radiogroup.setmListener(new NetIconNavigator.OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                textview1.setText("选中 "+position);
+                textview1.setText("选中 " + position);
             }
 
             @Override
             public void onTabReselect(int position) {
-                textview1.setText("重新选中 "+position);
+                textview1.setText("重新选中 " + position);
 
             }
         });
@@ -97,7 +110,7 @@ public class NetIconNavigatorActivity extends AppCompatActivity implements View.
             bottom_radiogroup.setNetTabDate(data, 0);
         } else if (id == R.id.button4) {
             // 默认
-            bottom_radiogroup.setDefaultIcon(resicon, 0);
+            bottom_radiogroup.setDefaultIcon(resicon2, 0);
 
         } else if (id == R.id.button5) {
             // 选中0
@@ -107,8 +120,22 @@ public class NetIconNavigatorActivity extends AppCompatActivity implements View.
             bottom_radiogroup.updateTabSelection(1);
 
         } else if (id == R.id.button7) {
+            //清除缓存
             NavigatorIconService.getInstance().clearImageDiskCache(this);
             NavigatorIconService.getInstance().clearImageMemoryCache(this);
+        } else if (id == R.id.button8) {
+            bottom_radiogroup.setTipMsg(2, 1);
+
+        } else if (id == R.id.button9) {
+            bottom_radiogroup.setTipMsg(2, 99);
+
+        } else if (id == R.id.button10) {
+            bottom_radiogroup.setTip(2);
+
+        } else if (id == R.id.button11) {
+            bottom_radiogroup.clearTipMessage(2);
+        } else if (id == R.id.button12) {
+            bottom_radiogroup.setTipMsg(2, 999);
         }
 
     }
