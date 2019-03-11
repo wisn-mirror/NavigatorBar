@@ -1,11 +1,12 @@
 # NavigatorBar
 
 
-All Navigator for Andorid
+All Navigator for Andorid 支持自定义网络图片导航
 
 ##  example
 
 ```java
+NetIconNavigatorActivity
 RadioButtonNavigatorActivity
 RadioButtonViewPagerNavigatorActivity
 TabLayoutCustomeViewNavigatorActivity
