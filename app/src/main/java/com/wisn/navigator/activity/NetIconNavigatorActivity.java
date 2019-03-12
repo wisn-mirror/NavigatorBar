@@ -16,7 +16,7 @@ import java.util.List;
 
 public class NetIconNavigatorActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private List<TabBean> data = new ArrayList<TabBean>();
+    private List<TabBean> data = new ArrayList<>();
     private String[] mSelectUrls = {
             "https://static3.laiyifen.com/edu-files/cms/image/1547965147229_1478.png",
             "https://static4.laiyifen.com/edu-files/cms/image/1547965161892_6032.png",
@@ -37,7 +37,8 @@ public class NetIconNavigatorActivity extends AppCompatActivity implements View.
             "http://lyf://DSMainItemView",
             "http://DSMainItemView",
             "http://lyf://userCenter",
-            "http://lyf://adc"
+            "http://lyf://adc",
+            "http://lyf://shopcart"
     };
     public int[][] resicon = {
             {
@@ -152,6 +153,14 @@ public class NetIconNavigatorActivity extends AppCompatActivity implements View.
             bottom_radiogroup.clearTipMessage(Urls[3]);
         } else if (id == R.id.button12) {
             bottom_radiogroup.setTipMsg(Urls[3], 999);
+        } else if (id == R.id.button13) {
+            TabBean tabBean = new TabBean("替换", R.drawable.app_icon_shopcart_selected, R.drawable.app_icon_shopcart_normal, "shopcart");
+            tabBean.isReplace=true;
+            bottom_radiogroup.replaceItem(2, tabBean);
+        } else if (id == R.id.button14) {
+            TabBean tabBean = new TabBean("替换", R.drawable.app_icon_shopcart_selected, R.drawable.app_icon_shopcart_normal, "shopcart");
+            tabBean.isReplace=true;
+            bottom_radiogroup.replaceItem(Urls[3], tabBean);
         }
 
     }

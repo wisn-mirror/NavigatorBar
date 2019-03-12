@@ -91,12 +91,11 @@ public class NetIconNavigator extends FrameLayout {
         mTabLinearLayout.removeAllViews();
         int mTabCount = mTabBeans.size();
         for (int i = 0; i < mTabCount; i++) {
-            View tabView = View.inflate(mContext, R.layout.layout_coutomizetab_top, null);
+            View tabView = View.inflate(mContext, R.layout.lib_layout_coutomizetab_top, null);
             NavigatorViewHolder navigatorViewHolder = new NavigatorViewHolder(tabView);
             TabBean tabBean = mTabBeans.get(i);
             tabBean.__position = i;
-            navigatorViewHolder.position = i;
-            navigatorViewHolder.url = tabBean.url;
+            navigatorViewHolder.update(i, tabBean.url);
             urlMap.put(tabBean.url, tabBean);
             tabView.setTag(navigatorViewHolder);
             upateSelectState(select == i, i, tabView, tabBean);
@@ -128,18 +127,24 @@ public class NetIconNavigator extends FrameLayout {
 
     private void upateSelectState(boolean isSelect, int position, View tabView, TabBean tabBean) {
         try {
-            NavigatorViewHolder navigatorViewHolder = getNavigatorViewHolder(position, tabView);
+            NavigatorViewHolder navigatorViewHolder = getNavigatorViewHolder(position, tabView, tabBean);
             if (isDeault) {
                 navigatorViewHolder.tv_tab_title.setText(tabBean.text);
                 navigatorViewHolder.iv_tab_icon.setImageResource(isSelect ? tabBean.resid[1] : tabBean.resid[0]);
             } else {
-                navigatorViewHolder.tv_tab_title.setText(tabBean.text);
-                String unSelectUrl = tabBean.src;
-                String SelectUrl = tabBean.srcUsed;
-                Glide.with(this)
-                        .load(isSelect ? SelectUrl : unSelectUrl)
-                        .apply(requestOptions)
-                        .into(navigatorViewHolder.iv_tab_icon);
+                if(tabBean.isReplace){
+                    navigatorViewHolder.tv_tab_title.setText(tabBean.text);
+                    navigatorViewHolder.iv_tab_icon.setImageResource(isSelect ? tabBean.resid[1] : tabBean.resid[0]);
+                }else{
+                    navigatorViewHolder.tv_tab_title.setText(tabBean.text);
+                    String unSelectUrl = tabBean.src;
+                    String SelectUrl = tabBean.srcUsed;
+                    Glide.with(this)
+                            .load(isSelect ? SelectUrl : unSelectUrl)
+                            .apply(requestOptions)
+                            .into(navigatorViewHolder.iv_tab_icon);
+                }
+
             }
             if (isSelect) {
                 mLastSelectPosition = position;
@@ -150,6 +155,10 @@ public class NetIconNavigator extends FrameLayout {
     }
 
     private NavigatorViewHolder getNavigatorViewHolder(int position, View tabView) {
+        return getNavigatorViewHolder(position, tabView, null);
+    }
+
+    private NavigatorViewHolder getNavigatorViewHolder(int position, View tabView, TabBean tabBean) {
         NavigatorViewHolder navigatorViewHolder = null;
         try {
             Object tag = tabView.getTag();
@@ -157,9 +166,12 @@ public class NetIconNavigator extends FrameLayout {
                 navigatorViewHolder = (NavigatorViewHolder) tag;
             } else {
                 navigatorViewHolder = new NavigatorViewHolder(tabView);
-                navigatorViewHolder.position = position;
-                tabView.setTag(navigatorViewHolder);
             }
+            if (tabBean != null) {
+                navigatorViewHolder.url = tabBean.url;
+            }
+            navigatorViewHolder.position = position;
+            tabView.setTag(navigatorViewHolder);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -196,6 +208,27 @@ public class NetIconNavigator extends FrameLayout {
         }
     }
 
+    public void replaceItem(String url, TabBean tabBean) {
+        TabBean tabBeannew = urlMap.get(url);
+        if (tabBeannew != null) {
+            replaceItem(tabBeannew.__position, tabBean);
+        }
+    }
+
+    public void replaceItem(int position, TabBean tabBean) {
+        try {
+            if (mTabLinearLayout == null) return;
+            TabBean tabBean1 = mTabBeans.get(position);
+            tabBean.__position = position;
+            urlMap.remove(tabBean1.url);
+            mTabBeans.set(position, tabBean);
+            urlMap.put(tabBean1.url, tabBean);
+            View tabViewOld = mTabLinearLayout.getChildAt(position);
+            upateSelectState(position == mLastSelectPosition, position, tabViewOld, tabBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void setTip(String url) {
         TabBean tabBeannew = urlMap.get(url);
@@ -219,7 +252,7 @@ public class NetIconNavigator extends FrameLayout {
     public void setTipMsg(String url, String msg) {
         TabBean tabBeannew = urlMap.get(url);
         if (tabBeannew != null) {
-            setTipMsg(tabBeannew.__position,msg);
+            setTipMsg(tabBeannew.__position, msg);
         }
     }
 
@@ -244,7 +277,7 @@ public class NetIconNavigator extends FrameLayout {
     public void setTipMsg(String url, int msg) {
         TabBean tabBeannew = urlMap.get(url);
         if (tabBeannew != null) {
-            setTipMsg(tabBeannew.__position,msg);
+            setTipMsg(tabBeannew.__position, msg);
         }
     }
 
@@ -296,6 +329,11 @@ public class NetIconNavigator extends FrameLayout {
             iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
             tv_tab_msg_tip = (ImageView) tabView.findViewById(R.id.tv_tab_msg_tip);
             tv_tab_msg = (TextView) tabView.findViewById(R.id.tv_tab_msg);
+        }
+
+        public void update(int position, String url) {
+            this.position = position;
+            this.url = url;
         }
     }
 

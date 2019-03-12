@@ -19,6 +19,7 @@ public class TabBean {
     public String url;
     public int[] resid;
     public int __position;
+    public boolean isReplace;
 
     public TabBean(String text, String srcUsed, String src, String url) {
         this.text = text;
